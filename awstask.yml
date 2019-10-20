@@ -1,0 +1,18 @@
+---
+## A basic Ansible Playbook to deploy AWS EC2 Instance
+- name: EC2 Instance creation
+  hosts: localhost
+  connection: local
+  tasks:
+  - name: Launching the EC2 instance
+    ec2: 
+      instance_type: t2.micro
+      key_name: virginia
+      image: ami-09c4dc682339079a7
+      region: us-east-1
+      group: default
+      count: 1
+      vpc_subnet_id: subnet-07f2cc5b
+      wait: yes
+      assign_public_ip: yes
+
